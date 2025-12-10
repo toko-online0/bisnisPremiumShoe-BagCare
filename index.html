@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shafaqo Premium Shoe & Bag Care</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0F172A', // Dark Slate
+                        accent: '#14B8A6', // Teal Modern
+                        secondary: '#F1F5F9', // Light Gray
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #14B8A6;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-secondary text-primary overflow-x-hidden relative">
+
+    <!-- Background Blobs Animation -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-1/3 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-dark text-white transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tighter flex items-center gap-2">
+                <i class="fa-solid fa-shoe-prints text-accent"></i> SHAFAQO
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#home" class="hover:text-accent transition">Beranda</a>
+                <a href="#services" class="hover:text-accent transition">Layanan</a>
+                <a href="#process" class="hover:text-accent transition">Proses</a>
+                <a href="#pricing" class="hover:text-accent transition">Harga</a>
+            </div>
+
+            <!-- CTA Button Desktop -->
+            <a href="https://wa.me/6282273902728?text=Halo%20Shafaqo,%20saya%20mau%20tanya%20tentang%20cuci%20sepatu" target="_blank" class="hidden md:block bg-accent hover:bg-teal-600 text-white px-5 py-2 rounded-full font-semibold transition transform hover:scale-105 shadow-lg shadow-teal-500/50">
+                Hubungi Kami
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary absolute w-full left-0 top-full shadow-xl border-t border-gray-700">
+            <div class="flex flex-col p-6 space-y-4 font-medium text-center">
+                <a href="#home" class="mobile-link hover:text-accent">Beranda</a>
+                <a href="#services" class="mobile-link hover:text-accent">Layanan</a>
+                <a href="#process" class="mobile-link hover:text-accent">Proses</a>
+                <a href="#pricing" class="mobile-link hover:text-accent">Harga</a>
+                <a href="https://wa.me/6282273902728" class="bg-accent text-white py-2 rounded-lg">Konsultasi Gratis</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-4 relative">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="text-center md:text-left" data-aos="fade-right" data-aos-duration="1000">
+                <div class="inline-block px-4 py-1 bg-white rounded-full text-accent text-sm font-bold mb-4 shadow-sm border border-accent/20">
+                    ✨ Premium Shoe & Bag Care
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 text-primary">
+                    Sepatu Bersih, <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-600">Langkah Percaya Diri.</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
+                    Layanan perawatan sepatu dan tas premium pertama dengan garansi cuci ulang. Kami merawat, bukan sekadar mencuci.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="https://wa.me/6282273902728?text=Halo%20Shafaqo,%20mau%20booking%20pickup" class="bg-primary text-white px-8 py-4 rounded-full font-bold shadow-xl hover:bg-gray-800 transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Booking Sekarang
+                    </a>
+                    <a href="#services" class="bg-white text-primary border border-gray-200 px-8 py-4 rounded-full font-bold shadow-lg hover:bg-gray-50 transition transform hover:-translate-y-1">
+                        Lihat Layanan
+                    </a>
+                </div>
+                <div class="mt-8 flex items-center justify-center md:justify-start gap-6 text-gray-500 text-sm font-medium">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-accent"></i> Garansi Puas</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-accent"></i> Antar Jemput</span>
+                </div>
+            </div>
+            
+            <div class="relative" data-aos="fade-left" data-aos-duration="1200">
+                <!-- Decorative Circles -->
+                <div class="absolute top-10 right-10 w-20 h-20 bg-accent rounded-full opacity-20 animate-pulse"></div>
+                <div class="absolute bottom-10 left-10 w-32 h-32 bg-blue-500 rounded-full opacity-10 animate-pulse"></div>
+                
+                <!-- Hero Image Placeholder (Ideally a 3D Shoe image) -->
+                <div class="relative z-10 animate-float">
+                   <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop" alt="Sepatu Bersih" class="rounded-3xl shadow-2xl border-4 border-white transform rotate-[-12deg] hover:rotate-0 transition duration-500 w-full max-w-md mx-auto object-cover h-[500px]">
+                   
+                   <!-- Floating Badge -->
+                   <div class="absolute -bottom-6 -right-6 md:right-10 bg-white p-4 rounded-xl shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+                       <div class="bg-green-100 p-2 rounded-full text-green-600">
+                           <i class="fa-solid fa-shield-halved text-xl"></i>
+                       </div>
+                       <div>
+                           <p class="text-xs text-gray-500">Kualitas</p>
+                           <p class="font-bold text-primary">Terjamin</p>
+                       </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-sm font-bold text-accent tracking-widest uppercase mb-2">Layanan Kami</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-primary">Solusi Lengkap Perawatan</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="group bg-secondary p-8 rounded-3xl hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-2 cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-white text-accent rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm group-hover:bg-accent group-hover:text-white transition">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Fast Cleaning</h4>
+                    <p class="text-gray-500 group-hover:text-gray-300 text-sm leading-relaxed">
+                        Pembersihan bagian luar (Upper & Midsole). Cocok untuk perawatan harian. Selesai dalam 24 jam.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group bg-secondary p-8 rounded-3xl hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-2 cursor-pointer border-2 border-accent" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 bg-accent text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg">
+                            <i class="fa-solid fa-hands-bubbles"></i>
+                        </div>
+                        <span class="bg-accent text-white text-xs px-2 py-1 rounded-md font-bold">Best Seller</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Deep Cleaning</h4>
+                    <p class="text-gray-500 group-hover:text-gray-300 text-sm leading-relaxed">
+                        Perawatan menyeluruh luar & dalam, termasuk tali dan insole. Menghilangkan bau & bakteri.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group bg-secondary p-8 rounded-3xl hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-2 cursor-pointer" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-white text-accent rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm group-hover:bg-accent group-hover:text-white transition">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Unyellowing</h4>
+                    <p class="text-gray-500 group-hover:text-gray-300 text-sm leading-relaxed">
+                        Mengembalikan warna sol sepatu yang menguning (oksidasi) menjadi putih kembali seperti baru.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section (SOP) -->
+    <section id="process" class="py-20 bg-primary text-white relative">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#14B8A6 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Proses Profesional</h2>
+                <p class="text-gray-400 max-w-xl mx-auto">Kami menggunakan SOP ketat untuk memastikan barang kesayangan Anda aman dan bersih maksimal.</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <!-- Step 1 -->
+                <div class="relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-accent text-2xl mb-4 shadow-[0_0_20px_rgba(20,184,166,0.3)]">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2">1. Check & Foto</h4>
+                    <p class="text-sm text-gray-400">Pengecekan detail kondisi awal & dokumentasi.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Connector Line (Desktop) -->
+                    <div class="hidden md:block absolute top-10 -left-1/2 w-full h-1 bg-gray-700 -z-10"></div>
+                    
+                    <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-gray-600 group-hover:border-accent transition text-2xl mb-4">
+                        <i class="fa-solid fa-soap"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2">2. Treatment</h4>
+                    <p class="text-sm text-gray-400">Pencucian manual sesuai jenis bahan material.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative" data-aos="fade-up" data-aos-delay="300">
+                    <div class="hidden md:block absolute top-10 -left-1/2 w-full h-1 bg-gray-700 -z-10"></div>
+                    
+                    <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-gray-600 text-2xl mb-4">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2">3. Drying</h4>
+                    <p class="text-sm text-gray-400">Pengeringan suhu ruangan (Tanpa Matahari).</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative" data-aos="fade-up" data-aos-delay="400">
+                    <div class="hidden md:block absolute top-10 -left-1/2 w-full h-1 bg-gray-700 -z-10"></div>
+                    
+                    <div class="w-20 h-20 mx-auto bg-accent rounded-full flex items-center justify-center text-white text-2xl mb-4 shadow-lg">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2">4. QC & Pack</h4>
+                    <p class="text-sm text-gray-400">Pengecekan akhir, parfum, dan packing rapi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / Why Us Section -->
+    <section id="pricing" class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1605647540924-852290f6b0d5?q=80&w=2037&auto=format&fit=crop" alt="Sepatu Bersih" class="rounded-3xl shadow-2xl object-cover h-96 w-full">
+                </div>
+                <div data-aos="fade-left">
+                    <h2 class="text-3xl font-bold mb-6 text-primary">Kenapa Memilih Shafaqo?</h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm">
+                            <i class="fa-solid fa-thumbs-up text-accent text-xl mt-1"></i>
+                            <div>
+                                <strong class="block text-primary">Teknik Manual Profesional</strong>
+                                <span class="text-sm text-gray-500">Kami tidak menggunakan mesin cuci yang merusak sepatu. Semua dikerjakan tangan.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm">
+                            <i class="fa-solid fa-truck-fast text-accent text-xl mt-1"></i>
+                            <div>
+                                <strong class="block text-primary">Layanan Antar Jemput</strong>
+                                <span class="text-sm text-gray-500">Malas keluar rumah? Kami jemput sepatu kotor Anda.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm">
+                            <i class="fa-solid fa-rotate-left text-accent text-xl mt-1"></i>
+                            <div>
+                                <strong class="block text-primary">Garansi Cuci Ulang</strong>
+                                <span class="text-sm text-gray-500">Kurang bersih? Kami cuci ulang gratis tanpa banyak tanya.</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="mt-8">
+                        <p class="text-sm text-gray-500 mb-2">Mulai dari</p>
+                        <div class="flex items-end gap-2 mb-6">
+                            <span class="text-4xl font-extrabold text-primary">Rp 30.000</span>
+                            <span class="text-gray-400 mb-1">/ pasang</span>
+                        </div>
+                        <a href="https://wa.me/6282273902728?text=Halo,%20saya%20mau%20lihat%20daftar%20harga%20lengkap" class="inline-block w-full text-center md:w-auto bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-gray-800 transition">
+                            Lihat Pricelist Lengkap
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 mb-12 border-b border-gray-800 pb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-shoe-prints text-accent"></i> SHAFAQO
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Mitra terbaik untuk menjaga kebersihan dan ketahanan sepatu serta tas kesayangan Anda.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent transition"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Kontak Kami</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-accent"></i> 0822-7390-2728
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-accent"></i> admin@shafaqo.com
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-location-dot text-accent"></i> Padangsidimpuan, Sumatera Utara
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Jam Operasional</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li class="flex justify-between"><span>Senin - Jumat</span> <span>09.00 - 20.00</span></li>
+                        <li class="flex justify-between"><span>Sabtu</span> <span>09.00 - 18.00</span></li>
+                        <li class="flex justify-between text-accent"><span>Minggu</span> <span>Tutup / Janjian</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-gray-600 text-sm">
+                &copy; 2025 Shafaqo Premium Care. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6282273902728?text=Halo%20Shafaqo,%20saya%20mau%20cuci%20sepatu" target="_blank" class="fixed bottom-6 right-6 z-50 group">
+        <span class="absolute right-0 bottom-16 bg-white px-4 py-2 rounded-xl shadow-lg text-xs font-bold text-gray-800 mb-2 opacity-0 group-hover:opacity-100 transition-opacity w-32 text-center pointer-events-none">
+            Butuh Bantuan?
+        </span>
+        <div class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl shadow-lg hover:bg-green-600 transition transform hover:scale-110 animate-bounce">
+            <i class="fa-brands fa-whatsapp"></i>
+        </div>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animate On Scroll
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close menu when link is clicked
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar Change on Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.classList.replace('py-4', 'py-2');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.replace('py-2', 'py-4');
+            }
+        });
+    </script>
+</body>
+</html>
